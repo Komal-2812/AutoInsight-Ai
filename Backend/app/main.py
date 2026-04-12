@@ -3,8 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import traceback
 
-# ── Create DB tables ──────────────────────────────────────────────────────────
-
+# ✅ DB IMPORTS (IMPORTANT)
+from app.database import engine
+from app.models import Base
 
 # ── App Initialization ────────────────────────────────────────────────────────
 app = FastAPI(
@@ -13,10 +14,15 @@ app = FastAPI(
     version="2.0.0"
 )
 
+# ── ✅ AUTO CREATE TABLES (FIX FOR RENDER) ─────────────────────────────────────
+@app.on_event("startup")
+def create_tables():
+    Base.metadata.create_all(bind=engine)
+
 # ── CORS Configuration ────────────────────────────────────────────────────────
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # later restrict
+    allow_origins=["*"],  # ⚠️ In production, restrict to your Vercel URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -37,7 +43,7 @@ async def global_exception_handler(request: Request, exc: Exception):
 # ── Import Routers ────────────────────────────────────────────────────────────
 from app.api import auth, datasets, analysis, chat, history, downloads
 
-# Optional (new features — safe import)
+# Optional routers (safe import)
 try:
     from app.api import dashboard
 except ImportError:
@@ -56,7 +62,6 @@ app.include_router(chat.router)
 app.include_router(history.router)
 app.include_router(downloads.router)
 
-# Optional routers (won't crash if not present)
 if dashboard:
     app.include_router(dashboard.router)
 
