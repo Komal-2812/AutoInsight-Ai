@@ -2,10 +2,15 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import traceback
+import os
 
-# ✅ DB IMPORTS (IMPORTANT)
+# ✅ DB
 from app.database import engine
 from app.models import Base
+
+# ✅ Alembic
+from alembic import command
+from alembic.config import Config
 
 # ── App Initialization ────────────────────────────────────────────────────────
 app = FastAPI(
@@ -14,15 +19,33 @@ app = FastAPI(
     version="2.0.0"
 )
 
-# ── ✅ AUTO CREATE TABLES (FIX FOR RENDER) ─────────────────────────────────────
+# ── ✅ AUTO MIGRATION (PRODUCTION SAFE) ───────────────────────────────────────
 @app.on_event("startup")
-def create_tables():
-    Base.metadata.create_all(bind=engine)
+def run_migrations():
+    try:
+        # Path to alembic.ini
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        alembic_path = os.path.join(base_dir, "alembic.ini")
+
+        alembic_cfg = Config(alembic_path)
+        command.upgrade(alembic_cfg, "head")
+
+        print("✅ Alembic migrations applied successfully")
+
+    except Exception as e:
+        print("⚠️ Alembic migration failed:", e)
+
+    # 🔥 FALLBACK (IMPORTANT — DO NOT REMOVE NOW)
+    try:
+        Base.metadata.create_all(bind=engine)
+        print("✅ Tables ensured via SQLAlchemy")
+    except Exception as e:
+        print("❌ Table creation failed:", e)
 
 # ── CORS Configuration ────────────────────────────────────────────────────────
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # ⚠️ In production, restrict to your Vercel URL
+    allow_origins=["*"],  # ⚠️ change later to your Vercel URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -43,7 +66,7 @@ async def global_exception_handler(request: Request, exc: Exception):
 # ── Import Routers ────────────────────────────────────────────────────────────
 from app.api import auth, datasets, analysis, chat, history, downloads
 
-# Optional routers (safe import)
+# Optional routers
 try:
     from app.api import dashboard
 except ImportError:
