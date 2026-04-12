@@ -1,0 +1,236 @@
+[
+  {
+    "type": "analysis",
+    "dataset_id": "5dcb9ed4-fc09-4ad9-8af0-c72590f15367",
+    "dataset_name": "test_data.csv",
+    "user_id": "854c2b12-730a-48be-bf46-948bef166dc0",
+    "status": "running",
+    "timestamp": "2026-04-04T06:38:04.182335"
+  },
+  {
+    "type": "chat",
+    "dataset_id": "5dcb9ed4-fc09-4ad9-8af0-c72590f15367",
+    "query": "What is the average salary?",
+    "user_id": "854c2b12-730a-48be-bf46-948bef166dc0",
+    "timestamp": "2026-04-04T06:38:17.612272"
+  },
+  {
+    "type": "analysis",
+    "dataset_id": "5dcb9ed4-fc09-4ad9-8af0-c72590f15367",
+    "dataset_name": "test_data.csv",
+    "user_id": "854c2b12-730a-48be-bf46-948bef166dc0",
+    "status": "completed",
+    "timestamp": "2026-04-04T06:38:19.082413"
+  },
+  {
+    "type": "analysis",
+    "dataset_id": "29fac53d-7c74-47f6-896c-cd1e94649635",
+    "dataset_name": "test_data.csv",
+    "user_id": "854c2b12-730a-48be-bf46-948bef166dc0",
+    "status": "running",
+    "timestamp": "2026-04-04T06:41:03.828378"
+  },
+  {
+    "type": "analysis",
+    "dataset_id": "64522de4-386d-42f6-a81d-3a88f25f22d5",
+    "dataset_name": "student_results_dataset.csv",
+    "user_id": "d277d301-7a28-4cac-b6c6-b34dd7585a02",
+    "status": "running",
+    "timestamp": "2026-04-04T06:50:21.172661"
+  },
+  {
+    "type": "analysis",
+    "dataset_id": "64522de4-386d-42f6-a81d-3a88f25f22d5",
+    "dataset_name": "student_results_dataset.csv",
+    "user_id": "d277d301-7a28-4cac-b6c6-b34dd7585a02",
+    "status": "running",
+    "timestamp": "2026-04-04T06:51:57.762717"
+  },
+  {
+    "type": "analysis",
+    "dataset_id": "29fac53d-7c74-47f6-896c-cd1e94649635",
+    "dataset_name": "test_data.csv",
+    "user_id": "854c2b12-730a-48be-bf46-948bef166dc0",
+    "status": "completed",
+    "timestamp": "2026-04-04T06:53:21.312620"
+  },
+  {
+    "type": "analysis",
+    "dataset_id": "64522de4-386d-42f6-a81d-3a88f25f22d5",
+    "dataset_name": "student_results_dataset.csv",
+    "user_id": "d277d301-7a28-4cac-b6c6-b34dd7585a02",
+    "status": "running",
+    "timestamp": "2026-04-06T05:51:05.568371"
+  },
+  {
+    "type": "analysis",
+    "dataset_id": "64522de4-386d-42f6-a81d-3a88f25f22d5",
+    "dataset_name": "student_results_dataset.csv",
+    "user_id": "d277d301-7a28-4cac-b6c6-b34dd7585a02",
+    "status": "running",
+    "timestamp": "2026-04-06T06:18:56.574717"
+  },
+  {
+    "type": "analysis",
+    "dataset_id": "64522de4-386d-42f6-a81d-3a88f25f22d5",
+    "dataset_name": "student_results_dataset.csv",
+    "user_id": "d277d301-7a28-4cac-b6c6-b34dd7585a02",
+    "status": "completed",
+    "timestamp": "2026-04-06T06:31:16.199164"
+  },
+  {
+    "type": "chat",
+    "dataset_id": "d31e1ef7-8a7f-4d7c-8677-377d6d57183f",
+    "query": "What are the main trends in this dataset?",
+    "user_id": "d277d301-7a28-4cac-b6c6-b34dd7585a02",
+    "timestamp": "2026-04-06T07:17:53.908033"
+  },
+  {
+    "type": "chat",
+    "dataset_id": "d31e1ef7-8a7f-4d7c-8677-377d6d57183f",
+    "query": "What are the main trends in this dataset?",
+    "user_id": "d277d301-7a28-4cac-b6c6-b34dd7585a02",
+    "timestamp": "2026-04-06T07:18:24.833280"
+  },
+  {
+    "type": "analysis",
+    "dataset_id": "64522de4-386d-42f6-a81d-3a88f25f22d5",
+    "dataset_name": "student_results_dataset.csv",
+    "user_id": "d277d301-7a28-4cac-b6c6-b34dd7585a02",
+    "status": "running",
+    "timestamp": "2026-04-06T07:24:48.048825"
+  },
+  {
+    "type": "chat",
+    "dataset_id": "64522de4-386d-42f6-a81d-3a88f25f22d5",
+    "query": "Summarize the main findings",
+    "user_id": "d277d301-7a28-4cac-b6c6-b34dd7585a02",
+    "timestamp": "2026-04-06T07:26:46.474101"
+  },
+  {
+    "type": "analysis",
+    "dataset_id": "64522de4-386d-42f6-a81d-3a88f25f22d5",
+    "dataset_name": "student_results_dataset.csv",
+    "user_id": "d277d301-7a28-4cac-b6c6-b34dd7585a02",
+    "status": "completed",
+    "timestamp": "2026-04-06T07:37:06.320390"
+  },
+  {
+    "type": "chat",
+    "dataset_id": "d31e1ef7-8a7f-4d7c-8677-377d6d57183f",
+    "query": "give count of result , how many student clear or not clear",
+    "user_id": "d277d301-7a28-4cac-b6c6-b34dd7585a02",
+    "timestamp": "2026-04-09T12:35:04.115366"
+  },
+  {
+    "type": "analysis",
+    "dataset_id": "0b73c255-cdcb-435d-8382-27f4469fd54b",
+    "dataset_name": "student_results_final_semester.csv",
+    "user_id": "5f58b9c0-fff4-4705-b110-a6d1af99aa99",
+    "status": "running",
+    "timestamp": "2026-04-11T13:47:04.797562"
+  },
+  {
+    "type": "analysis",
+    "dataset_id": "0b73c255-cdcb-435d-8382-27f4469fd54b",
+    "dataset_name": "",
+    "user_id": "5f58b9c0-fff4-4705-b110-a6d1af99aa99",
+    "status": "completed",
+    "timestamp": "2026-04-11T13:47:35.569508"
+  },
+  {
+    "type": "analysis",
+    "dataset_id": "ee07ed5e-7d51-409e-a6f9-8eeb0316c7e0",
+    "dataset_name": "student_results_3semesters.csv",
+    "user_id": "5f58b9c0-fff4-4705-b110-a6d1af99aa99",
+    "status": "running",
+    "timestamp": "2026-04-11T13:48:15.031227"
+  },
+  {
+    "type": "analysis",
+    "dataset_id": "ee07ed5e-7d51-409e-a6f9-8eeb0316c7e0",
+    "dataset_name": "",
+    "user_id": "5f58b9c0-fff4-4705-b110-a6d1af99aa99",
+    "status": "completed",
+    "timestamp": "2026-04-11T13:48:39.370508"
+  },
+  {
+    "type": "analysis",
+    "dataset_id": "d690744a-5181-41d5-900d-a91424710b59",
+    "dataset_name": "Selected_Exporters_Data1.xlsx",
+    "user_id": "5f58b9c0-fff4-4705-b110-a6d1af99aa99",
+    "status": "running",
+    "timestamp": "2026-04-11T17:50:32.296904"
+  },
+  {
+    "type": "chat",
+    "dataset_id": "d690744a-5181-41d5-900d-a91424710b59",
+    "query": "Show me the top 10 records",
+    "user_id": "5f58b9c0-fff4-4705-b110-a6d1af99aa99",
+    "timestamp": "2026-04-11T17:53:02.276993"
+  },
+  {
+    "type": "chat",
+    "dataset_id": "d690744a-5181-41d5-900d-a91424710b59",
+    "query": "top 1 product name ",
+    "user_id": "5f58b9c0-fff4-4705-b110-a6d1af99aa99",
+    "timestamp": "2026-04-11T17:53:23.421646"
+  },
+  {
+    "type": "chat",
+    "dataset_id": "d690744a-5181-41d5-900d-a91424710b59",
+    "query": "total recdords",
+    "user_id": "5f58b9c0-fff4-4705-b110-a6d1af99aa99",
+    "timestamp": "2026-04-11T17:54:11.533859"
+  },
+  {
+    "type": "analysis",
+    "dataset_id": "d690744a-5181-41d5-900d-a91424710b59",
+    "dataset_name": "",
+    "user_id": "5f58b9c0-fff4-4705-b110-a6d1af99aa99",
+    "status": "completed",
+    "timestamp": "2026-04-11T18:11:20.387830"
+  },
+  {
+    "type": "chat",
+    "dataset_id": "d690744a-5181-41d5-900d-a91424710b59",
+    "query": "sales trend",
+    "user_id": "5f58b9c0-fff4-4705-b110-a6d1af99aa99",
+    "timestamp": "2026-04-11T18:16:09.660940"
+  },
+  {
+    "type": "chat",
+    "dataset_id": "d690744a-5181-41d5-900d-a91424710b59",
+    "query": "How does the average item rate vary across different countries of destination?",
+    "user_id": "5f58b9c0-fff4-4705-b110-a6d1af99aa99",
+    "timestamp": "2026-04-11T18:33:45.720316"
+  },
+  {
+    "type": "chat",
+    "dataset_id": "d690744a-5181-41d5-900d-a91424710b59",
+    "query": "give list export items names ",
+    "user_id": "5f58b9c0-fff4-4705-b110-a6d1af99aa99",
+    "timestamp": "2026-04-11T18:36:55.804579"
+  },
+  {
+    "type": "chat",
+    "dataset_id": "d690744a-5181-41d5-900d-a91424710b59",
+    "query": "give list export items nmaes",
+    "user_id": "5f58b9c0-fff4-4705-b110-a6d1af99aa99",
+    "timestamp": "2026-04-11T18:38:02.232305"
+  },
+  {
+    "type": "chat",
+    "dataset_id": "d690744a-5181-41d5-900d-a91424710b59",
+    "query": "top 10 country of destination",
+    "user_id": "5f58b9c0-fff4-4705-b110-a6d1af99aa99",
+    "timestamp": "2026-04-11T18:38:50.642740"
+  },
+  {
+    "type": "chat",
+    "dataset_id": "d690744a-5181-41d5-900d-a91424710b59",
+    "query": "count top 10 item desc ",
+    "user_id": "5f58b9c0-fff4-4705-b110-a6d1af99aa99",
+    "timestamp": "2026-04-11T18:39:26.173535"
+  }
+]
