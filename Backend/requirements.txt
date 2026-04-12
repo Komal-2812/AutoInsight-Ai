@@ -18,3 +18,13 @@ httpx
 aiofiles
 pydantic-settings
 pydantic[email]
+plotly
+langgraph
+langchain-core
+langchain-community
+openai
+pydantic
+groq
+scikit-learn
+setuptools
+wheel
