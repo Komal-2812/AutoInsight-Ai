@@ -14,82 +14,77 @@ from app.orchestrator.nodes import (
 )
 
 # ── Condition helper ──────────────────────────────────────────────────────────
-
 def _should_continue(state: GraphState) -> str:
     return END if state.get("status") == "failed" else "next"
 
 
 # ── FULL ANALYSIS GRAPH ───────────────────────────────────────────────────────
-
 def build_analysis_graph():
     g = StateGraph(GraphState)
 
-    # Nodes
-    g.add_node("load", node_load)
-    g.add_node("clean", node_clean)
-    g.add_node("eda_node", node_eda)   
-    g.add_node("insights", node_insights)
-    g.add_node("charts", node_charts)
-    g.add_node("kpis", node_kpis)
-    g.add_node("finalize", node_finalize)
+    # ✅ FIX 1: Rename ALL nodes to avoid state conflict
+    g.add_node("load_node", node_load)
+    g.add_node("clean_node", node_clean)
+    g.add_node("eda_node", node_eda)
+    g.add_node("insights_node", node_insights)
+    g.add_node("charts_node", node_charts)
+    g.add_node("kpis_node", node_kpis)
+    g.add_node("finalize_node", node_finalize)
 
     # Entry
-    g.set_entry_point("load")
+    g.set_entry_point("load_node")
 
-    # Conditional edge ONLY (important fix)
+    # Conditional edge
     g.add_conditional_edges(
-        "load",
+        "load_node",
         _should_continue,
         {
-            "next": "clean",
+            "next": "clean_node",
             END: END
         }
     )
 
-    # Pipeline
-    g.add_edge("clean", "eda")
-    g.add_edge("eda_node", "insights")
-    g.add_edge("insights", "charts")
-    g.add_edge("charts", "kpis")
-    g.add_edge("kpis", "finalize")
-    g.add_edge("finalize", END)
+    # ✅ FIX 2: Correct all edges (match node names)
+    g.add_edge("clean_node", "eda_node")
+    g.add_edge("eda_node", "insights_node")
+    g.add_edge("insights_node", "charts_node")
+    g.add_edge("charts_node", "kpis_node")
+    g.add_edge("kpis_node", "finalize_node")
+    g.add_edge("finalize_node", END)
 
     return g.compile()
 
 
-# ── QUERY GRAPH (FIXED) ───────────────────────────────────────────────────────
-
+# ── QUERY GRAPH ───────────────────────────────────────────────────────────────
 def build_query_graph():
     g = StateGraph(GraphState)
 
-    g.add_node("load", node_load)
-    g.add_node("query", node_query)
+    # ✅ Also fix here for consistency
+    g.add_node("load_node", node_load)
+    g.add_node("query_node", node_query)
 
-    g.set_entry_point("load")
+    g.set_entry_point("load_node")
 
-    # Correct conditional routing
     g.add_conditional_edges(
-        "load",
+        "load_node",
         _should_continue,
         {
-            "next": "query",
+            "next": "query_node",
             END: END
         }
     )
 
-    g.add_edge("query", END)
+    g.add_edge("query_node", END)
 
     return g.compile()
 
 
 # ── SINGLETONS ────────────────────────────────────────────────────────────────
-
 analysis_graph = build_analysis_graph()
 query_graph = build_query_graph()
 
 
 # ── INITIAL STATE ─────────────────────────────────────────────────────────────
-
 def _initial_state(dataset_id: str, file_path: str, query: str = None) -> GraphState:
     return {
         "dataset_id": dataset_id,
@@ -103,8 +98,8 @@ def _initial_state(dataset_id: str, file_path: str, query: str = None) -> GraphS
         "dtypes": {},
 
         "cleaning_log": [],
-        "eda": {},
-        "insights": [],
+        "eda": {},            # ✅ SAFE (node is eda_node)
+        "insights": [],       # ✅ SAFE (node is insights_node)
         "summary": "",
 
         "kpis": [],
@@ -121,7 +116,6 @@ def _initial_state(dataset_id: str, file_path: str, query: str = None) -> GraphS
 
 
 # ── RUNNERS ───────────────────────────────────────────────────────────────────
-
 def run_analysis_graph(dataset_id: str, file_path: str) -> dict:
     state = analysis_graph.invoke(_initial_state(dataset_id, file_path))
     return _serialize(state)
@@ -138,6 +132,5 @@ def run_query_graph(dataset_id: str, file_path: str, query: str) -> dict:
 
 
 # ── SERIALIZER ────────────────────────────────────────────────────────────────
-
 def _serialize(state: dict) -> dict:
     return {k: v for k, v in state.items() if k != "dataframe"}
