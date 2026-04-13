@@ -27,7 +27,7 @@ def build_analysis_graph():
     # Nodes
     g.add_node("load", node_load)
     g.add_node("clean", node_clean)
-    g.add_node("eda", node_eda)
+    g.add_node("eda_node", node_eda)   
     g.add_node("insights", node_insights)
     g.add_node("charts", node_charts)
     g.add_node("kpis", node_kpis)
@@ -48,7 +48,7 @@ def build_analysis_graph():
 
     # Pipeline
     g.add_edge("clean", "eda")
-    g.add_edge("eda", "insights")
+    g.add_edge("eda_node", "insights")
     g.add_edge("insights", "charts")
     g.add_edge("charts", "kpis")
     g.add_edge("kpis", "finalize")
